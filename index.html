@@ -81,11 +81,11 @@ ul{
 Predict whether a movie will become a Hit or Flop using Machine Learning
 </p>
 
-<form action="/predict" method="POST">
+<form onsubmit="predictMovie(event)">
 
 <input
 type="number"
-name="budget"
+id="budget"
 placeholder="Enter Movie Budget"
 required
 >
@@ -98,62 +98,66 @@ Predict Success
 
 </form>
 
-{% if prediction_text %}
-<div class="result">
-
-<h2>{{ prediction_text }}</h2>
-
-<p>
-💰 Budget Entered: {{ budget }} Million
-</p>
-
-<p>
-Prediction generated successfully
-</p>
-
-</div>
-{% endif %}
+<div id="result"></div>
 
 <div class="section">
 <h3>📌 About Project</h3>
 <p>
-This web application predicts movie success using machine learning based on movie budget.
+This web application predicts movie success based on movie budget.
 </p>
 </div>
 
 <div class="section">
 <h3>✨ Features</h3>
-
 <ul>
 <li>Movie hit/flop prediction</li>
 <li>Budget based analysis</li>
-<li>Machine learning prediction</li>
-<li>Built using Flask</li>
+<li>Runs directly in browser</li>
 </ul>
-
 </div>
 
 <div class="section">
 <h3>📝 How to Use</h3>
-
 <p>
 1. Enter movie budget<br>
 2. Click Predict Success<br>
 3. View result instantly
 </p>
-
 </div>
 
 <div class="section">
 <h3>⚙️ Technologies Used</h3>
-
 <p>
-Python • Flask • HTML • CSS • Scikit-learn
+HTML • CSS • JavaScript
 </p>
-
 </div>
 
 </div>
+
+<script>
+function predictMovie(event){
+    event.preventDefault();
+
+    let budget = parseFloat(document.getElementById("budget").value);
+
+    let result = "";
+
+    if (budget > 100){
+        result = "🎬 Hit Movie";
+    } else {
+        result = "❌ Flop Movie";
+    }
+
+    document.getElementById("result").innerHTML =
+    `
+    <div class="result">
+        <h2>${result}</h2>
+        <p>💰 Budget Entered: ${budget} Million</p>
+        <p>Prediction generated successfully</p>
+    </div>
+    `;
+}
+</script>
 
 </body>
 </html>
