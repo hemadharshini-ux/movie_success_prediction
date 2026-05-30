@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie Success Prediction</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#141E30,#243B55);
+}
+
+.container{
+    width:550px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+input{
+    width:80%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+button{
+    margin-top:15px;
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    background:#6c5ce7;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#574bdb;
+}
+
+.result{
+    margin-top:20px;
+    padding:20px;
+    background:#f3f3f3;
+    border-radius:12px;
+}
+
+.section{
+    margin-top:25px;
+    text-align:left;
+}
+
+.section h3{
+    color:#333;
+}
+
+.section p{
+    color:#555;
+    line-height:1.6;
+}
+
+ul{
+    color:#555;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>🎬 Movie Success Prediction</h1>
+
+<p>
+Predict whether a movie will become a Hit or Flop using Machine Learning
+</p>
+
+<form action="/predict" method="POST">
+
+<input
+type="number"
+name="budget"
+placeholder="Enter Movie Budget"
+required
+>
+
+<br>
+
+<button type="submit">
+Predict Success
+</button>
+
+</form>
+
+{% if prediction_text %}
+<div class="result">
+
+<h2>{{ prediction_text }}</h2>
+
+<p>
+💰 Budget Entered: {{ budget }} Million
+</p>
+
+<p>
+Prediction generated successfully
+</p>
+
+</div>
+{% endif %}
+
+<div class="section">
+<h3>📌 About Project</h3>
+<p>
+This web application predicts movie success using machine learning based on movie budget.
+</p>
+</div>
+
+<div class="section">
+<h3>✨ Features</h3>
+
+<ul>
+<li>Movie hit/flop prediction</li>
+<li>Budget based analysis</li>
+<li>Machine learning prediction</li>
+<li>Built using Flask</li>
+</ul>
+
+</div>
+
+<div class="section">
+<h3>📝 How to Use</h3>
+
+<p>
+1. Enter movie budget<br>
+2. Click Predict Success<br>
+3. View result instantly
+</p>
+
+</div>
+
+<div class="section">
+<h3>⚙️ Technologies Used</h3>
+
+<p>
+Python • Flask • HTML • CSS • Scikit-learn
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
